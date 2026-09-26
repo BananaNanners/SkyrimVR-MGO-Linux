@@ -46,7 +46,7 @@ This guide was tested with:
 
 - **CachyOS / Arch-based Linux**
 - **Skyrim VR**
-- **Mad God Overhaul 3.8.2**
+- **Mad God Overhaul 3.8.8.1**
 - **WiVRn 26.2.3**
 - **Quest 3**
 - **Quest Touch Plus controllers**
