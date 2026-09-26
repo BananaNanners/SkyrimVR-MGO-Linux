@@ -1,6 +1,7 @@
-[README.md](https://github.com/user-attachments/files/32689662/README.md)
 # Skyrim VR Mad God Overhaul on Linux
 ## WiVRn + OpenComposite + Quest controller workaround
+
+> ✅ Confirmed working on CachyOS with MGO 3.8.2, WiVRn 26.2.3, OpenComposite, Quest 3, and Quest Touch Plus controllers.
 
 > Community-tested workaround for running **Skyrim VR Mad God Overhaul (MGO)** on Linux with **WiVRn** and full Quest controller input.
 >
