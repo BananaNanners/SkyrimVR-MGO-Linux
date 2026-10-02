@@ -533,27 +533,44 @@ That is normal.
 
 ---
 
-# 7. Launch MGO
+## 7. Launch MGO
 
-Launch MGO normally.
+Launch MGO with a Pressure Vessel override that exposes the host OpenXR runtime to the Steam container.
 
-For the first test, avoid experimental OpenXR/pressure-vessel overrides.
+The preferred option is:
 
-In particular, this guide does **not** require:
+```bash
+PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 %command%
 
-```text
-PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
-```
+In the tested setup, launching without an OpenXR/Pressure Vessel override caused OpenComposite to fail during startup with:
+xrEnumerateInstanceExtensionProperties(nullptr, 0, &availableExtensionsCount, nullptr)
+Error code: -13
 
-or:
+Adding:
+```bash
+PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 %command%
 
-```text
-PRESSURE_VESSEL_FILESYSTEMS_RW=...
-```
+allowed MGO to launch normally.
 
-Those variables were useful during troubleshooting, but they were not part of the final working configuration.
+An alternative that also worked was exposing the WiVRn runtime socket directly:
 
-Keep whatever launch options your normal Jackify/MGO setup already requires.
+```bash
+PRESSURE_VESSEL_FILESYSTEMS_RW=/run/user/1000/wivrn %command%
+
+Both variables together also worked:
+
+```bash
+PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 PRESSURE_VESSEL_FILESYSTEMS_RW=/run/user/1000/wivrn %command%
+
+For the cleanest setup, use PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 first.
+
+If your normal Jackify/MGO setup already requires additional launch options, keep those as well.
+
+Example:
+
+PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 STEAM_COMPAT_MOUNTS="/home/bananananers/SkyrimVRMODMGO3.8/Modlist_Downloads" OBS_VKCAPTURE=1 %command%
+
+Note: the exact STEAM_COMPAT_MOUNTS path depends on where your MGO downloads folder is located. Adjust it to match your own installation.
 
 ---
 
