@@ -547,19 +547,18 @@ xrEnumerateInstanceExtensionProperties(nullptr, 0, &availableExtensionsCount, nu
 Error code: -13
 
 Adding:
-```bash
+
 PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 %command%
 
 allowed MGO to launch normally.
 
 An alternative that also worked was exposing the WiVRn runtime socket directly:
 
-```bash
+
 PRESSURE_VESSEL_FILESYSTEMS_RW=/run/user/1000/wivrn %command%
 
 Both variables together also worked:
 
-```bash
 PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 PRESSURE_VESSEL_FILESYSTEMS_RW=/run/user/1000/wivrn %command%
 
 For the cleanest setup, use PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 first.
